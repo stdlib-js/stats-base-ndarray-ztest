@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2025-06-22)
+## Unreleased (2025-06-24)
 
 <section class="features">
 
@@ -22,6 +22,7 @@
 
 <details>
 
+-   [`bc3d9f8`](https://github.com/stdlib-js/stdlib/commit/bc3d9f874bf104401acb9ba825fa73bda0ed9463) - **refactor:** use base ndarray utility _(by Athan Reines)_
 -   [`c81a64c`](https://github.com/stdlib-js/stdlib/commit/c81a64c31b410883da7a3029c80376ff1bd2ac65) - **feat:** add `stats/base/ndarray/ztest` _(by Athan Reines)_
 
 </details>
