@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/stats-base-ndarray-ztest",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Compute a one-sample Z-test for a one-dimensional ndarray.",
   "license": "Apache-2.0",
   "author": {
@@ -57,7 +57,7 @@
     "@stdlib/ndarray-to-array": "^0.2.1",
     "@stdlib/random-array-normal": "^0.2.1",
     "@stdlib/random-strided-normal": "^0.2.1",
-    "@stdlib/stats-base-ztest-alternative-resolve-enum": "github:stdlib-js/stats-base-ztest-alternative-resolve-enum#main",
+    "@stdlib/stats-base-ztest-alternative-resolve-enum": "^0.1.0",
     "@stdlib/stats-base-ztest-one-sample-results-float64": "github:stdlib-js/stats-base-ztest-one-sample-results-float64#main",
     "tape": "git+https://github.com/kgryte/tape.git#fix/globby",
     "istanbul": "^0.4.1",
@@ -92,7 +92,6 @@
     "normality",
     "ndarray"
   ],
-  "__stdlib__": {},
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/stdlib"
