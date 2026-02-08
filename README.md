@@ -54,7 +54,7 @@ A Z-test commonly refers to a one-sample location test which compares the mean o
 ## Usage
 
 ```javascript
-import ztest from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest@esm/index.mjs';
+import ztest from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest@v0.1.1-esm/index.mjs';
 ```
 
 #### ztest( arrays )
@@ -134,7 +134,7 @@ import normal from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-normal@es
 import ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@esm/index.mjs';
 import scalar2ndarray from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@esm/index.mjs';
 import ndarray2array from 'https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@esm/index.mjs';
-import ztest from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest@esm/index.mjs';
+import ztest from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest@v0.1.1-esm/index.mjs';
 
 var opts = {
     'dtype': 'generic'
