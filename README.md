@@ -47,38 +47,32 @@ A Z-test commonly refers to a one-sample location test which compares the mean o
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-ndarray-ztest
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-ztest = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var ztest = require( 'path/to/vendor/umd/stats-base-ndarray-ztest/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.ztest;
-})();
-</script>
+var ztest = require( '@stdlib/stats-base-ndarray-ztest' );
 ```
 
 #### ztest( arrays )
@@ -90,13 +84,13 @@ var Float64Results = require( '@stdlib/stats-base-ztest-one-sample-results-float
 var resolveEnum = require( '@stdlib/stats-base-ztest-alternative-resolve-enum' );
 var structFactory = require( '@stdlib/array-struct-factory' );
 var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
+var vector = require( '@stdlib/ndarray-vector-ctor' );
 var ndarray = require( '@stdlib/ndarray-ctor' );
 
 var opts = {
     'dtype': 'generic'
 };
-var xbuf = [ 1.0, 3.0, 4.0, 2.0 ];
-var x = new ndarray( opts.dtype, xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
+var x = vector( [ 1.0, 3.0, 4.0, 2.0 ], 'generic' );
 
 var alt = scalar2ndarray( resolveEnum( 'two-sided' ), {
     'dtype': 'int8'
@@ -116,14 +110,14 @@ var bool = ( v === out );
 
 The function has the following parameters:
 
--   **arrays**: array-like object containing the following ndarrays in order:
+-   **arrays**: array-like object containing the following ndarrays:
 
-    1.  a one-dimensional input ndarray.
-    2.  a zero-dimensional output ndarray containing a [results object][@stdlib/stats/base/ztest/one-sample/results/float64].
-    3.  a zero-dimensional ndarray specifying the alternative hypothesis.
-    4.  a zero-dimensional ndarray specifying the significance level.
-    5.  a zero-dimensional ndarray specifying the mean under the null hypothesis.
-    6.  a zero-dimensional ndarray specifying the known standard deviation.
+    -   a one-dimensional input ndarray.
+    -   a zero-dimensional output ndarray containing a [results object][@stdlib/stats/base/ztest/one-sample/results/float64].
+    -   a zero-dimensional ndarray specifying the alternative hypothesis.
+    -   a zero-dimensional ndarray specifying the significance level.
+    -   a zero-dimensional ndarray specifying the mean under the null hypothesis.
+    -   a zero-dimensional ndarray specifying the known standard deviation.
 
 </section>
 
@@ -145,28 +139,22 @@ The function has the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ztest-one-sample-results-float64@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ztest-alternative-resolve-enum@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-struct-factory@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-normal@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-ctor@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-from-scalar@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/ndarray-to-array@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-ndarray-ztest@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var Float64Results = require( '@stdlib/stats-base-ztest-one-sample-results-float64' );
+var resolveEnum = require( '@stdlib/stats-base-ztest-alternative-resolve-enum' );
+var structFactory = require( '@stdlib/array-struct-factory' );
+var normal = require( '@stdlib/random-normal' );
+var ndarray = require( '@stdlib/ndarray-ctor' );
+var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
+var ndarray2array = require( '@stdlib/ndarray-to-array' );
+var ztest = require( '@stdlib/stats-base-ndarray-ztest' );
 
 var opts = {
     'dtype': 'generic'
 };
 
 // Create a one-dimensional ndarray containing pseudorandom numbers drawn from a normal distribution:
-var xbuf = normal( 100, 0.0, 1.0, opts );
-var x = new ndarray( opts.dtype, xbuf, [ xbuf.length ], [ 1 ], 0, 'row-major' );
+var x = normal( [ 100 ], 0.0, 1.0, opts );
 console.log( ndarray2array( x ) );
 
 // Specify the alternative hypothesis:
@@ -190,11 +178,6 @@ var out = new ndarray( Float64Results, new ResultsArray( 1 ), [], [ 0 ], 0, 'row
 // Perform a Z-test:
 var v = ztest( [ x, out, alt, alpha, mu, sigma ] );
 console.log( v.get().toString() );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -281,7 +264,7 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/stats-base-ndarray-ztest/main/LICENSE
 
-[@stdlib/stats/base/ztest/one-sample/results/float64]: https://github.com/stdlib-js/stats-base-ztest-one-sample-results-float64/tree/umd
+[@stdlib/stats/base/ztest/one-sample/results/float64]: https://github.com/stdlib-js/stats-base-ztest-one-sample-results-float64
 
 </section>
 
